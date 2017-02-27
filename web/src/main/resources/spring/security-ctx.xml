@@ -15,6 +15,7 @@
         <custom-filter position="LOGOUT_FILTER" ref="logoutFilter"/>
         <custom-filter position="FORM_LOGIN_FILTER" ref="loginAuthFilter"/>
         <custom-filter position="REMEMBER_ME_FILTER" ref="tokenAuthFilter"/>
+        <custom-filter position="FIRST" ref="corsFilter"/>
 
         <!-- Put the most specific matches at the top -->
         <intercept-url pattern="/api/v1/employees/**" method="GET" access="hasAnyRole('ROLE_MANAGER, ROLE_ADMIN')"/>

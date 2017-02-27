@@ -1,32 +1,3 @@
-// dependency versions
-def spring_version = '4.2.5.RELEASE'
-def spring_security_version = '4.1.0.RELEASE'
-def hibernate_version = '5.1.0.Final'
-def hibernate_validator_version = '5.2.4.Final'
-def javax_persistence_version = '1.0.0.Final'
-def postgres_version = '9.4.1208.jre7'
-def hsqldb_version = '2.3.3'
-def junit_version = '4.12'
-def apache_commons_lang_version = '3.4'
-def apache_commons_collections_version = '4.1'
-def apache_commons_commons_beanutils_version = '1.9.2'
-def spring_rest_docs_version = '1.0.1.RELEASE'
-def servlet_api_version = '3.1.0'
-def jackson_version = '2.6.5'
-def jjwt_version = '0.6.0'
-def guava_version = '19.0'
-def javax_el_version = '2.2'
-def javax_mail_version = '1.4.7'
-def sourceVersion = '0.0.1-SNAPSHOT'
-
-def slf4j_version = '1.7.21'
-def log4j2_version = '2.5'
-def slf4j_log4j2_binding_version = '2.5'
-def jcl_over_slf4j_version = '1.7.21'
-def jboss_logging_version = '3.3.0.Final'
-
-def sourceComp = 1.8
-
 ext {
     guava_core = "com.google.guava:guava:$guava_version"
     hibernate_core = "org.hibernate:hibernate-core:$hibernate_version"
@@ -55,31 +26,22 @@ ext {
     jjwt = "io.jsonwebtoken:jjwt:$jjwt_version"
     javax_mail = "javax.mail:mail:$javax_mail_version"
 
-
-
-
     /* Logging bridge */
     slf4j = "org.slf4j:slf4j-api:$slf4j_version"
-
     /* Logging framework */
     log4j2 = "org.apache.logging.log4j:log4j-core:$log4j2_version"
-
     /* Bridge-implementation binding */
     slf4j_log4j2_binding = "org.apache.logging.log4j:log4j-slf4j-impl:$slf4j_log4j2_binding_version"
-
     /* Commons-logging redirection to SLF4J. Make sure commons-logging excluded from Spring */
     jcl_over_slf4j = "org.slf4j:jcl-over-slf4j:$jcl_over_slf4j_version"
-
     /* Updated version of Hibernate's logger dependency. Needed for proper SLF4J integration with Hibernate */
     jboss_logging = "org.jboss.logging:jboss-logging:$jboss_logging_version"
-
-
 }
 
 allprojects {
     apply plugin: 'java'
-    sourceCompatibility = sourceComp
-    version = sourceVersion
+    sourceCompatibility = 1.8
+    version = 1.8
     repositories {
         mavenCentral()
         jcenter()

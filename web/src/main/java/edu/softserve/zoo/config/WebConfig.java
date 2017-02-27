@@ -3,7 +3,6 @@ package edu.softserve.zoo.config;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import edu.softserve.zoo.converter.mapping.DtoMapperImpl;
 import edu.softserve.zoo.util.AppProfiles;
@@ -21,6 +20,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
@@ -38,7 +38,7 @@ import java.util.List;
 @EnableWebMvc
 @ComponentScan({"edu.softserve.zoo.controller.rest", "edu.softserve.zoo.converter",
         "edu.softserve.zoo.advice", "edu.softserve.zoo.service",
-        "edu.softserve.zoo.persistence", "edu.softserve.zoo.web.security"})
+        "edu.softserve.zoo.persistence", "edu.softserve.zoo.web.security", "edu.softserve.zoo.filter"})
 @PropertySource({"classpath:web.properties", "classpath:security.properties"})
 @ImportResource("classpath:spring/security-ctx.xml")
 public class WebConfig extends WebMvcConfigurerAdapter {
@@ -95,6 +95,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureContentNegotiation(ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON).ignoreAcceptHeader(true);
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**").allowedOrigins("*");
     }
 
     @Bean
