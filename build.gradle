@@ -4,6 +4,7 @@ ext {
     hibernate_java8 = "org.hibernate:hibernate-java8:$hibernate_version"
     hibernate_validator = "org.hibernate:hibernate-validator:$hibernate_validator_version"
     javax_persistence = "org.hibernate.javax.persistence:hibernate-jpa-2.1-api:$javax_persistence_version"
+    spring_log4j2 = "org.springframework.boot:spring-boot-starter-log4j2:$spring_boot_version"
     spring_jpa = "org.springframework.boot:spring-boot-starter-data-jpa:$spring_boot_version"
     spring_mail = "org.springframework.boot:spring-boot-starter-mail:$spring_boot_version"
     spring_security = "org.springframework.boot:spring-boot-starter-security:$spring_boot_version"
@@ -27,6 +28,7 @@ allprojects {
         jcenter()
     }
     dependencies {
+        compile spring_log4j2
         testCompile hsqldb
         testCompile spring_test
     }
