@@ -1,6 +1,5 @@
 package edu.softserve.zoo.service;
 
-import edu.softserve.zoo.exceptions.NotFoundException;
 import edu.softserve.zoo.model.Employee;
 import edu.softserve.zoo.model.Task;
 import edu.softserve.zoo.model.TaskStatistics;

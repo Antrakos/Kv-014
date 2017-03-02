@@ -1,9 +1,7 @@
 dependencies {
     compile project(':core')
     compile guava_core
-    compile spring_context
-    compile spring_orm
-    compile hibernate_core
+    compile spring_jpa
     compile hibernate_java8
     compile postgres_jdbc_driver
     compile apache_commons_lang

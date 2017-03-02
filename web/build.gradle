@@ -5,35 +5,23 @@ buildscript {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE'
     }
 }
-plugins {
-    id "org.asciidoctor.convert" version "1.5.2"
-}
 apply plugin: 'org.springframework.boot'
 apply plugin: 'docker'
 dependencies {
     compile project(':service')
-    compile spring_mvc
     compile jackson
     compile apache_commons_lang
     compile apache_commons_collections4
     compile apache_commons_commons_beanutils
-    compile servlet_api
     compile hibernate_validator
-    compile spring_security_config
-    compile spring_security_web
     compile jjwt
-    compile('org.springframework.boot:spring-boot-starter-web:1.5.1.RELEASE') {
-        exclude group: 'ch.qos.logback'
-    }
-
+    compile spring_web
     testCompile spring_rest_docs
-    testCompile hsqldb
-    testCompile javax_el
 }
 
 task buildDocker(type: Docker, dependsOn: build) {
     push = project.hasProperty('push')
-    tag = 'antrakos/zoo-project'
+    tag = 'antrakos/zoo-backend'
     dockerfile = file('src/main/docker/Dockerfile')
     doFirst {
         copy {
@@ -41,8 +29,4 @@ task buildDocker(type: Docker, dependsOn: build) {
             into stageDir
         }
     }
-}
-
-ext {
-    snippetsDir = file('build/generated-snippets')
 }

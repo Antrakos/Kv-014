@@ -1,8 +1,6 @@
 package edu.softserve.zoo.controller.rest;
 
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.dto.GeographicalZoneDto;
 import edu.softserve.zoo.model.GeographicalZone;
 import edu.softserve.zoo.service.GeographicalZoneService;
@@ -23,7 +21,6 @@ import static edu.softserve.zoo.controller.rest.Routes.GEO_ZONES;
  */
 @RestController
 @RequestMapping(GEO_ZONES)
-@DocsClassDescription("Geographical zone resource")
 public class GeographicalZoneRestController extends AbstractRestController<GeographicalZoneDto, GeographicalZone> {
 
     @Autowired
@@ -34,7 +31,6 @@ public class GeographicalZoneRestController extends AbstractRestController<Geogr
         return geographicalZoneService;
     }
 
-    @DocsTest
     @RequestMapping(method = RequestMethod.GET)
     @Override
     public List<GeographicalZoneDto> getAll() {

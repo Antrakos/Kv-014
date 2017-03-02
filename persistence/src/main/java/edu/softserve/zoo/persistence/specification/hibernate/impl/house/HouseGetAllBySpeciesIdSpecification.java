@@ -28,8 +28,8 @@ public class HouseGetAllBySpeciesIdSpecification implements HQLSpecification<Hou
 
     @Override
     public String query() {
-        return String.format("select h from House h join ZooZone z on h.zone.id = z.id " +
-                "join GeographicalZone g on z.geographicalZone.id = g.id " +
+        return String.format("select h from House h join h.zone z " +
+                "join z.geographicalZone g " +
                 "where g in (select geo.id from Species s join s.geographicalZones geo where s.id = %d)", speciesId);
     }
 }

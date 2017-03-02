@@ -1,18 +1,13 @@
 package edu.softserve.zoo.web.test.controller.rest;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import edu.softserve.zoo.controller.rest.Routes;
 import edu.softserve.zoo.converter.ModelConverter;
 import edu.softserve.zoo.dto.EmployeeDto;
 import edu.softserve.zoo.dto.TaskDto;
-import edu.softserve.zoo.dto.TaskStatisticsDto;
 import edu.softserve.zoo.dto.ZooZoneDto;
-import edu.softserve.zoo.model.Employee;
 import edu.softserve.zoo.model.Task;
-import edu.softserve.zoo.model.ZooZone;
 import edu.softserve.zoo.service.TaskService;
 import edu.softserve.zoo.util.AppProfiles;
 import edu.softserve.zoo.web.test.config.WebTestConfig;
@@ -27,9 +22,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -37,9 +29,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static edu.softserve.zoo.model.Task.TaskType.FEEDING;
-import static org.junit.Assert.*;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**

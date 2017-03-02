@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.Dto;
 import edu.softserve.zoo.model.Species;
 import org.hibernate.validator.constraints.Length;
@@ -13,35 +12,28 @@ import java.util.Set;
 @Dto(Species.class)
 public class SpeciesDto extends BaseDto {
 
-    @DocsFieldDescription("The family")
     @NotNull
     private FamilyDto family;
 
-    @DocsFieldDescription("The scientific name")
     @NotNull
     @NotEmpty
     @Length(max = 50)
     private String scientificName;
 
-    @DocsFieldDescription("The common name")
     @NotNull
     @NotEmpty
     @Length(max = 50)
     private String commonName;
 
     @NotNull
-    @DocsFieldDescription("The min temperature")
     private Integer temperatureMin;
 
     @NotNull
-    @DocsFieldDescription("The max temperature")
     private Integer temperatureMax;
 
     @NotNull
-    @DocsFieldDescription("The count od animals per house")
     private Integer animalsPerHouse;
 
-    @DocsFieldDescription(value = "The geographical zones", optional = true)
     private Set<GeographicalZoneDto> geographicalZones;
 
     public SpeciesDto() {

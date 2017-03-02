@@ -1,6 +1,5 @@
 package edu.softserve.zoo.service.security;
 
-import edu.softserve.zoo.exceptions.ApplicationException;
 import edu.softserve.zoo.exceptions.NotFoundException;
 import edu.softserve.zoo.model.Employee;
 import edu.softserve.zoo.model.Role;

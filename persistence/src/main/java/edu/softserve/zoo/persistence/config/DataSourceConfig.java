@@ -38,12 +38,14 @@ public class DataSourceConfig {
     @Bean
     @Profile(AppProfiles.TEST)
     public DataSource testDataSource() {
+        final String syntaxScript = env.getProperty("db.syntax");
         final String schemaScript = env.getProperty("db.schema");
         final String populateScript = env.getProperty("db.data");
 
         final EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder
                 .setType(EmbeddedDatabaseType.HSQL)
+                .addScript(syntaxScript)
                 .addScripts(schemaScript)
                 .addScripts(populateScript)
                 .build();

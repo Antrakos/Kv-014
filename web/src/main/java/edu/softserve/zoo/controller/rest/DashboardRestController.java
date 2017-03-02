@@ -1,8 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsParamDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.service.Service;
 import edu.softserve.zoo.service.StatisticsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +20,6 @@ import static edu.softserve.zoo.controller.rest.Routes.DASHBOARD;
  */
 @RestController
 @RequestMapping(DASHBOARD)
-@DocsClassDescription("Dashboard resource")
 public class DashboardRestController extends AbstractRestController {
 
     private final HashMap<DashboardType, Supplier> dashboardTypeMethodMap = fillDashboardTypeMethodMap();
@@ -37,9 +33,8 @@ public class DashboardRestController extends AbstractRestController {
     @Autowired
     StatisticsService service;
 
-    @DocsTest(pathParameters = "fed-animals")
     @RequestMapping(path = "/{type}", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity getDashboardFor(@PathVariable @DocsParamDescription("The type of statistics") String type) {
+    public ResponseEntity getDashboardFor(@PathVariable String type) {
         DashboardType dashboardType = DashboardType.valueOf(type.toUpperCase().replace('-', '_'));
         return ResponseEntity.ok(dashboardTypeMethodMap.get(dashboardType).get());
     }

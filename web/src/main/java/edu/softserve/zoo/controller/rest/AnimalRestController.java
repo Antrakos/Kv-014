@@ -1,8 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsParamDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.dto.AnimalDto;
 import edu.softserve.zoo.model.Animal;
 import edu.softserve.zoo.service.AnimalService;
@@ -23,7 +20,6 @@ import static edu.softserve.zoo.controller.rest.Routes.ANIMALS;
  */
 @RestController
 @RequestMapping(ANIMALS)
-@DocsClassDescription("Animal resource")
 public class AnimalRestController extends AbstractRestController<AnimalDto, Animal> {
 
     @Autowired
@@ -34,56 +30,48 @@ public class AnimalRestController extends AbstractRestController<AnimalDto, Anim
         return animalService;
     }
 
-    @DocsTest
     @RequestMapping(method = RequestMethod.GET)
     @Override
     public List<AnimalDto> getAll() {
         return super.getAll();
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     @Override
-    public AnimalDto getById(@PathVariable @DocsParamDescription("id of animal") Long id) {
+    public AnimalDto getById(@PathVariable Long id) {
         return super.getById(id);
     }
 
-    @DocsTest
     @RequestMapping(method = RequestMethod.POST)
     @Override
     public AnimalDto create(@Valid @RequestBody AnimalDto dto) {
         return super.create(dto);
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     @Override
-    public AnimalDto update(@Valid @RequestBody AnimalDto dto, @PathVariable @DocsParamDescription("id of animal") Long id) {
+    public AnimalDto update(@Valid @RequestBody AnimalDto dto, @PathVariable Long id) {
         return super.update(dto, id);
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     @Override
-    public ResponseEntity delete(@PathVariable @DocsParamDescription("id of animal") Long id) {
+    public ResponseEntity delete(@PathVariable Long id) {
         return super.delete(id);
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(method = RequestMethod.GET, params = "houseId")
     public List<AnimalDto> getAllByHouseId(@RequestParam("houseId") Long houseId) {
         List<Animal> allByHouseId = animalService.getAllByHouseId(houseId);
         return converter.convertToDto(allByHouseId);
     }
 
-    @DocsTest(pathParameters = "161130")
     @RequestMapping(method = RequestMethod.GET, params = "speciesId")
     public List<AnimalDto> getAllBySpeciesId(@RequestParam("speciesId") Long speciesId) {
         List<Animal> allBySpeciesId = animalService.getAllBySpeciesId(speciesId);
         return converter.convertToDto(allBySpeciesId);
     }
 
-    @DocsTest
     @RequestMapping(path = "/count", method = RequestMethod.GET)
     @Override
     public Long count() {

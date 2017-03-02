@@ -1,5 +1,3 @@
--- Using this allows compatibility with some other aspects of PostgreSQL dialect.
-SET DATABASE SQL SYNTAX PGS TRUE;
 -- SCHEMA CREATION (IN DEFAULT DATABASE: DEFAULT->POSTGRES)
 DROP SCHEMA IF EXISTS ZOO CASCADE;
 CREATE SCHEMA ZOO;

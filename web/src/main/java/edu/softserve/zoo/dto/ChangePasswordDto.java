@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.IrrespectiveDto;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -12,12 +11,10 @@ import javax.validation.constraints.NotNull;
 @IrrespectiveDto
 public class ChangePasswordDto {
 
-    @DocsFieldDescription("New password for user")
     @NotNull
     @NotEmpty
     private String newPassword;
 
-    @DocsFieldDescription("Current user password to confirm changes")
     @NotNull
     @NotEmpty
     private String confirmationPassword;

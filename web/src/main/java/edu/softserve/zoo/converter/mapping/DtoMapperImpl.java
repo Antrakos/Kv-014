@@ -92,9 +92,7 @@ public class DtoMapperImpl implements DtoMapper {
                                 mappings.put(entityClass, dtoClass);
                             });
 
-                            tryWithAnnotation(IrrespectiveDto.class, dtoClass, (annotation) -> {
-                                LOGGER.info(format("Found irrespective dto: `%s`", dtoClass.getSimpleName()));
-                            });
+                            tryWithAnnotation(IrrespectiveDto.class, dtoClass, (annotation) -> LOGGER.info(format("Found irrespective dto: `%s`", dtoClass.getSimpleName())));
                         }
                 );
     }

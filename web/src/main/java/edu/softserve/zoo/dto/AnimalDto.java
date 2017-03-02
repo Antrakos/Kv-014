@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.Dto;
 import edu.softserve.zoo.model.Animal;
 import org.hibernate.validator.constraints.Length;
@@ -13,22 +12,17 @@ import java.util.Objects;
 @Dto(Animal.class)
 public class AnimalDto extends BaseDto {
 
-    @DocsFieldDescription(value = "The nickname", optional = true)
     @Length(max = 50)
     private String nickname;
 
-    @DocsFieldDescription("All species")
     @NotNull
     private SpeciesDto species;
 
-    @DocsFieldDescription("The house")
     @NotNull
     private HouseDto house;
 
-    @DocsFieldDescription("The birthday")
     private LocalDate birthday;
 
-    @DocsFieldDescription("The food consumption")
     @NotNull
     @Min(1)
     private Integer foodConsumption;

@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.Dto;
 import edu.softserve.zoo.model.GeographicalZone;
 import org.hibernate.validator.constraints.Length;
@@ -12,7 +11,6 @@ import java.util.Objects;
 @Dto(GeographicalZone.class)
 public class GeographicalZoneDto extends BaseDto {
 
-    @DocsFieldDescription("The region name")
     @NotNull
     @NotEmpty
     @Length(max = 50)

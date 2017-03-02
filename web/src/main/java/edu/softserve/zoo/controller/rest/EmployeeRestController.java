@@ -1,8 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsParamDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.dto.EmployeeDto;
 import edu.softserve.zoo.dto.TaskStatisticsDto;
 import edu.softserve.zoo.dto.TaskStatusDto;
@@ -17,9 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.stream.Collectors;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static edu.softserve.zoo.controller.rest.Routes.EMPLOYEES;
 
@@ -30,7 +26,6 @@ import static edu.softserve.zoo.controller.rest.Routes.EMPLOYEES;
  */
 @RestController
 @RequestMapping(EMPLOYEES)
-@DocsClassDescription("Employee resource")
 public class EmployeeRestController extends AbstractRestController<EmployeeDto, Employee> {
 
     @Autowired
@@ -44,36 +39,31 @@ public class EmployeeRestController extends AbstractRestController<EmployeeDto, 
         return employeeService;
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     @Override
-    public EmployeeDto getById(@PathVariable @DocsParamDescription("id of employee") Long id) {
+    public EmployeeDto getById(@PathVariable Long id) {
         return super.getById(id);
     }
-    @DocsTest
     @RequestMapping(method = RequestMethod.POST)
     @Override
     public EmployeeDto create(@RequestBody EmployeeDto dto) {
         return super.create(dto);
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = {RequestMethod.PUT})
     @Override
-    public EmployeeDto update(@Valid @RequestBody EmployeeDto dto, @PathVariable @DocsParamDescription("id of employee") Long id) {
+    public EmployeeDto update(@Valid @RequestBody EmployeeDto dto, @PathVariable Long id) {
         return super.update(dto, id);
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     @Override
-    public ResponseEntity delete(@PathVariable @DocsParamDescription("id of employee") Long id) {
+    public ResponseEntity delete(@PathVariable Long id) {
         return super.delete(id);
     }
 
-    @DocsTest(pathParameters = "2")
     @RequestMapping(path = "/{id}/performance", method = RequestMethod.GET, produces = "application/json")
-    public TaskStatisticsDto getStatistics(@PathVariable @DocsParamDescription("id of employee") Long id) {
+    public TaskStatisticsDto getStatistics(@PathVariable Long id) {
         TaskStatisticsDto dto = new TaskStatisticsDto();
         TaskStatistics statistics = taskService.getStatistics(id);
         dto.setTaskStatuses(
@@ -89,7 +79,6 @@ public class EmployeeRestController extends AbstractRestController<EmployeeDto, 
         return dto;
     }
 
-    @DocsTest
     @RequestMapping(path = "/count", method = RequestMethod.GET)
     @Override
     public Long count() {
@@ -97,7 +86,6 @@ public class EmployeeRestController extends AbstractRestController<EmployeeDto, 
     }
 
     @Override
-    @DocsTest
     @RequestMapping(method = RequestMethod.GET)
     public List<EmployeeDto> getAll() {
         return super.getAll();

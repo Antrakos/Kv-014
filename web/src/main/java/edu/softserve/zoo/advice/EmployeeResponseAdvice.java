@@ -48,9 +48,7 @@ public class EmployeeResponseAdvice implements ResponseBodyAdvice<Object> {
             EmployeeDto dto = (EmployeeDto) o;
             if (dto.getRoles() == null)
                 return; // bad but working way to avoid NPE for Role
-            Set<String> roles = dto.getRoles().stream().map(role -> {
-                return ((RoleDto) role).getType().toString();
-            })
+            Set<String> roles = dto.getRoles().stream().map(role -> ((RoleDto) role).getType().toString())
                     .collect(Collectors.toSet());
             dto.setRoles((Set) roles);
         });

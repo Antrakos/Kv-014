@@ -1,8 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsParamDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.dto.AnimalDto;
 import edu.softserve.zoo.dto.HouseDto;
 import edu.softserve.zoo.model.House;
@@ -24,7 +21,6 @@ import static edu.softserve.zoo.controller.rest.Routes.HOUSES;
  */
 @RestController
 @RequestMapping(HOUSES)
-@DocsClassDescription("House resource")
 public class HouseRestController extends AbstractRestController<HouseDto, House> {
 
     @Autowired
@@ -35,7 +31,6 @@ public class HouseRestController extends AbstractRestController<HouseDto, House>
         return houseService;
     }
 
-    @DocsTest(pathParameters = "1")
     @Override
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public HouseDto getById(@PathVariable Long id) {
@@ -48,48 +43,41 @@ public class HouseRestController extends AbstractRestController<HouseDto, House>
         return super.create(dto);
     }
 
-    @DocsTest(pathParameters = "1")
     @Override
     @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
     public HouseDto update(@RequestBody HouseDto dto, @PathVariable Long id) {
         return super.update(dto, id);
     }
 
-    @DocsTest(pathParameters = "1")
     @Override
     @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity delete(@PathVariable Long id) {
         return super.delete(id);
     }
 
-    @DocsTest
     @Override
     @RequestMapping(method = RequestMethod.GET)
     public List<HouseDto> getAll() {
         return super.getAll();
     }
 
-    @DocsTest(pathParameters = "1")
     @RequestMapping(method = RequestMethod.GET, params = "zoneId")
-    public List<HouseDto> getAllByZooZoneId(@RequestParam @DocsParamDescription("The zone") Long zoneId) {
+    public List<HouseDto> getAllByZooZoneId(@RequestParam Long zoneId) {
         List<House> allByZoneId = houseService.getAllByZooZoneId(zoneId);
         return converter.convertToDto(allByZoneId);
     }
 
-    @DocsTest(pathParameters = "159795")
     @RequestMapping(method = RequestMethod.GET, params = "speciesId")
-    public List<AnimalDto> getAllBySpeciesId(@RequestParam @DocsParamDescription("Species id") Long speciesId) {
+    public List<AnimalDto> getAllBySpeciesId(@RequestParam Long speciesId) {
         List<House> allBySpeciesId = houseService.getAllAcceptableForNewAnimalBySpeciesId(speciesId);
         return converter.convertToDto(allBySpeciesId);
     }
 
-    @DocsTest
     @RequestMapping(path = "/populations", method = RequestMethod.GET)
     public Map<Long, Long> getCapacityMap() {
         return houseService.getHousesCurrentCapacityMap();
     }
 
-    @DocsTest
     @RequestMapping(path="/count", method = RequestMethod.GET)
     @Override
     public Long count() {

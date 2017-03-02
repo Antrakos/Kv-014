@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.Dto;
 import edu.softserve.zoo.model.Role;
 
@@ -11,7 +10,6 @@ import java.util.Objects;
 @Dto(Role.class)
 public class RoleDto extends BaseDto {
 
-    @DocsFieldDescription("The type of role")
     @NotNull
     private Role.Type type;
 

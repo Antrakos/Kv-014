@@ -1,7 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.model.Task;
 import edu.softserve.zoo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import static edu.softserve.zoo.controller.rest.Routes.TASK_TYPES;
  * @author Julia Avdeionok
  */
 
-@DocsClassDescription("Task types resource")
 @RestController
 @RequestMapping(TASK_TYPES)
 public class TaskTypesRestController {
@@ -27,7 +24,6 @@ public class TaskTypesRestController {
     @Autowired
     private TaskService taskService;
 
-    @DocsTest
     @RequestMapping(method = RequestMethod.GET)
     public List<Task.TaskType> getTaskTypes(){
         return taskService.getTaskTypes();

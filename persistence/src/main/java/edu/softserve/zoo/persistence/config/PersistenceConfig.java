@@ -1,5 +1,6 @@
 package edu.softserve.zoo.persistence.config;
 
+import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.PropertySource;
  *
  * @author Andrii Abramov on 6/15/16.
  */
-@Configuration
+@SpringBootConfiguration
 @ComponentScan("edu.softserve.zoo.persistence")
 @PropertySource("classpath:persistence.properties")
 public class PersistenceConfig {

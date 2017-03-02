@@ -1,7 +1,5 @@
 package edu.softserve.zoo.controller.rest;
 
-import edu.softserve.zoo.annotation.DocsClassDescription;
-import edu.softserve.zoo.annotation.DocsTest;
 import edu.softserve.zoo.dto.SpeciesDto;
 import edu.softserve.zoo.model.Species;
 import edu.softserve.zoo.service.Service;
@@ -22,7 +20,6 @@ import static edu.softserve.zoo.controller.rest.Routes.SPECIES;
  */
 @RestController
 @RequestMapping(SPECIES)
-@DocsClassDescription("Species resource")
 public class SpeciesRestController extends AbstractRestController<SpeciesDto, Species> {
 
     @Autowired
@@ -33,7 +30,6 @@ public class SpeciesRestController extends AbstractRestController<SpeciesDto, Sp
         return speciesService;
     }
 
-    @DocsTest
     @Override
     @RequestMapping(method = RequestMethod.GET)
     public List<SpeciesDto> getAll() {

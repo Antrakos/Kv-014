@@ -1,6 +1,5 @@
 package edu.softserve.zoo.dto;
 
-import edu.softserve.zoo.annotation.DocsFieldDescription;
 import edu.softserve.zoo.annotation.Dto;
 import edu.softserve.zoo.model.ZooZone;
 import org.hibernate.validator.constraints.Length;
@@ -13,24 +12,20 @@ import java.util.Objects;
 @Dto(ZooZone.class)
 public class ZooZoneDto extends BaseDto {
 
-    @DocsFieldDescription("The name")
     @NotNull
     @NotEmpty
     @Length(max = 20)
     private String name;
 
-    @DocsFieldDescription("The description")
     @Length(max = 100)
     @NotNull
     @NotEmpty
     private String description;
 
-    @DocsFieldDescription("The house capacity")
     @NotNull
     @Min(0)
     private Integer houseCapacity;
 
-    @DocsFieldDescription("The geographical zone")
     @NotNull
     private GeographicalZoneDto geographicalZone;
 
