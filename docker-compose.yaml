@@ -1,0 +1,27 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:9.4
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: zoo
+    ports:
+      - 5432:5432
+  backend:
+    image: antrakos/zoo-backend
+    restart: unless-stopped
+    links:
+      - postgres
+    ports:
+      - 8010:8010
+  frontend:
+    image: antrakos/zoo-frontend
+    links:
+      - backend
+    ports:
+      - 8080:8080
+
+volumes:
+  db:
+    driver: local
